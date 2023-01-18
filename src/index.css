@@ -1,0 +1,42 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: bisque;
+}
+
+.outer-container {
+  background-color: darkcyan;
+  width: 600px;
+  display: flex;
+}
+
+/* ------- Pad Container --------- */
+.pad-container {
+  width: 300px;
+  padding: 20px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pad {
+  background-color: rgb(111, 111, 111);
+  width: 80px;
+  height: 80px;
+}
+
+/* ------- Controls Container --------- */
+.controls-container {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}

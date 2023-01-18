@@ -3,32 +3,32 @@ export default function App() {
     <>
       <div className="outer-container" id="drum-machine">
         <div className="pad-container">
-          <div className="pad">
-            <span>Q</span>
+          <div className="drum-pad">
+            <span className="q">Q</span>
           </div>
-          <div className="pad">
-            <span>Q</span>
+          <div className="drum-pad">
+            <span>W</span>
           </div>
-          <div className="pad">
-            <span>Q</span>
+          <div className="drum-pad">
+            <span>E</span>
           </div>
-          <div className="pad">
-            <span>Q</span>
+          <div className="drum-pad">
+            <span>A</span>
           </div>
-          <div className="pad">
-            <span>Q</span>
+          <div className="drum-pad">
+            <span>S</span>
           </div>
-          <div className="pad">
-            <span>Q</span>
+          <div className="drum-pad">
+            <span>D</span>
           </div>
-          <div className="pad">
-            <span>Q</span>
+          <div className="drum-pad">
+            <span>Z</span>
           </div>
-          <div className="pad">
-            <span>Q</span>
+          <div className="drum-pad">
+            <span>X</span>
           </div>
-          <div className="pad">
-            <span>Q</span>
+          <div className="drum-pad">
+            <span>C</span>
           </div>
         </div>
         <div className="controls-container">

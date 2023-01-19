@@ -11,52 +11,40 @@ export default function App() {
   const xRef = useRef(null);
   const cRef = useRef(null);
 
+  const currentRef = (letterRef) => {
+    letterRef.current.classList.add("drum-pad-active");
+    letterRef.current.children[0].currentTime = 0;
+    letterRef.current.children[0].play();
+  };
+
   // TODO refactor
   const handleKeyDown = (event) => {
     if (event.key === "q") {
-      qRef.current.classList.add("drum-pad-active");
-      qRef.current.children[0].currentTime = 0;
-      qRef.current.children[0].play();
+      currentRef(qRef);
     }
     if (event.key === "w") {
-      wRef.current.classList.add("drum-pad-active");
-      wRef.current.children[0].currentTime = 0;
-      wRef.current.children[0].play();
+      currentRef(wRef);
     }
     if (event.key === "e") {
-      eRef.current.classList.add("drum-pad-active");
-      eRef.current.children[0].currentTime = 0;
-      eRef.current.children[0].play();
+      currentRef(eRef);
     }
     if (event.key === "a") {
-      aRef.current.classList.add("drum-pad-active");
-      aRef.current.children[0].currentTime = 0;
-      aRef.current.children[0].play();
+      currentRef(aRef);
     }
     if (event.key === "s") {
-      sRef.current.classList.add("drum-pad-active");
-      sRef.current.children[0].currentTime = 0;
-      sRef.current.children[0].play();
+      currentRef(sRef);
     }
     if (event.key === "d") {
-      dRef.current.classList.add("drum-pad-active");
-      dRef.current.children[0].currentTime = 0;
-      dRef.current.children[0].play();
+      currentRef(dRef);
     }
     if (event.key === "z") {
-      zRef.current.classList.add("drum-pad-active");
-      zRef.current.children[0].currentTime = 0;
-      zRef.current.children[0].play();
+      currentRef(zRef);
     }
     if (event.key === "x") {
-      xRef.current.classList.add("drum-pad-active");
-      xRef.current.children[0].currentTime = 0;
-      xRef.current.children[0].play();
+      currentRef(xRef);
     }
     if (event.key === "c") {
-      cRef.current.classList.add("drum-pad-active");
-      cRef.current.children[0].currentTime = 0;
-      cRef.current.children[0].play();
+      currentRef(cRef);
     }
   };
 

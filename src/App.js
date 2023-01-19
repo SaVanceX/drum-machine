@@ -11,73 +11,134 @@ export default function App() {
   const xRef = useRef(null);
   const cRef = useRef(null);
 
+  const togglePadActiveClass = (letterRef) => {
+    if (letterRef.current) {
+      if (letterRef.current.classList.contains("drum-pad-active")) {
+        letterRef.current.classList.remove("drum-pad-active");
+      } else {
+        letterRef.current.classList.add("drum-pad-active");
+      }
+    } else {
+      if (letterRef.classList.contains("drum-pad-active")) {
+        letterRef.classList.remove("drum-pad-active");
+      } else {
+        letterRef.classList.add("drum-pad-active");
+      }
+    }
+  };
+
   const currentRef = (letterRef) => {
-    letterRef.current.classList.add("drum-pad-active");
-    letterRef.current.children[0].currentTime = 0;
-    letterRef.current.children[0].play();
+    if (letterRef.current) {
+      letterRef.current.children[0].currentTime = 0;
+      letterRef.current.children[0].play();
+    } else {
+      letterRef.children[0].currentTime = 0;
+      letterRef.children[0].play();
+    }
   };
 
-  // TODO refactor
   const handleKeyDown = (event) => {
-    if (event.key === "q") {
-      currentRef(qRef);
-    }
-    if (event.key === "w") {
-      currentRef(wRef);
-    }
-    if (event.key === "e") {
-      currentRef(eRef);
-    }
-    if (event.key === "a") {
-      currentRef(aRef);
-    }
-    if (event.key === "s") {
-      currentRef(sRef);
-    }
-    if (event.key === "d") {
-      currentRef(dRef);
-    }
-    if (event.key === "z") {
-      currentRef(zRef);
-    }
-    if (event.key === "x") {
-      currentRef(xRef);
-    }
-    if (event.key === "c") {
-      currentRef(cRef);
+    switch (event.key.toUpperCase()) {
+      case "Q":
+        togglePadActiveClass(qRef);
+        currentRef(qRef);
+        break;
+      case "W":
+        togglePadActiveClass(wRef);
+        currentRef(wRef);
+        break;
+      case "E":
+        togglePadActiveClass(eRef);
+        currentRef(eRef);
+        break;
+      case "A":
+        togglePadActiveClass(aRef);
+        currentRef(aRef);
+        break;
+      case "S":
+        togglePadActiveClass(sRef);
+        currentRef(sRef);
+        break;
+      case "D":
+        togglePadActiveClass(dRef);
+        currentRef(dRef);
+        break;
+      case "Z":
+        togglePadActiveClass(zRef);
+        currentRef(zRef);
+        break;
+      case "X":
+        togglePadActiveClass(xRef);
+        currentRef(xRef);
+        break;
+      case "C":
+        togglePadActiveClass(cRef);
+        currentRef(cRef);
+        break;
     }
   };
 
-  // TODO refactor
   const handleKeyUp = (event) => {
-    if (event.key === "q") {
-      qRef.current.classList.remove("drum-pad-active");
-      // heater1.currentTime = 0;
-      // heater1.play();
+    switch (event.key.toUpperCase()) {
+      case "Q":
+        togglePadActiveClass(qRef);
+        break;
+      case "W":
+        togglePadActiveClass(wRef);
+        break;
+      case "E":
+        togglePadActiveClass(eRef);
+        break;
+      case "A":
+        togglePadActiveClass(aRef);
+        break;
+      case "S":
+        togglePadActiveClass(sRef);
+        break;
+      case "D":
+        togglePadActiveClass(dRef);
+        break;
+      case "Z":
+        togglePadActiveClass(zRef);
+        break;
+      case "X":
+        togglePadActiveClass(xRef);
+        break;
+      case "C":
+        togglePadActiveClass(cRef);
+        break;
     }
-    if (event.key === "w") {
-      wRef.current.classList.remove("drum-pad-active");
-    }
-    if (event.key === "e") {
-      eRef.current.classList.remove("drum-pad-active");
-    }
-    if (event.key === "a") {
-      aRef.current.classList.remove("drum-pad-active");
-    }
-    if (event.key === "s") {
-      sRef.current.classList.remove("drum-pad-active");
-    }
-    if (event.key === "d") {
-      dRef.current.classList.remove("drum-pad-active");
-    }
-    if (event.key === "z") {
-      zRef.current.classList.remove("drum-pad-active");
-    }
-    if (event.key === "x") {
-      xRef.current.classList.remove("drum-pad-active");
-    }
-    if (event.key === "c") {
-      cRef.current.classList.remove("drum-pad-active");
+  };
+
+  const handleClick = (event) => {
+    switch (event.target.textContent.toUpperCase()) {
+      case "Q":
+        currentRef(event.target.closest(".drum-pad"));
+        break;
+      case "W":
+        currentRef(event.target.closest(".drum-pad"));
+        break;
+      case "E":
+        currentRef(event.target.closest(".drum-pad"));
+        break;
+      case "A":
+        currentRef(event.target.closest(".drum-pad"));
+        break;
+      case "S":
+        currentRef(event.target.closest(".drum-pad"));
+        break;
+      case "D":
+        currentRef(event.target.closest(".drum-pad"));
+        break;
+      case "Z":
+        currentRef(event.target.closest(".drum-pad"));
+        break;
+      case "X":
+        currentRef(event.target.closest(".drum-pad"));
+        break;
+      case "C":
+        currentRef(event.target.closest(".drum-pad"));
+        break;
     }
   };
 
@@ -90,91 +151,121 @@ export default function App() {
     <>
       <div className="outer-container" id="drum-machine">
         <div className="pad-container">
-          <div className="drum-pad" ref={qRef}>
+          <div
+            className="drum-pad"
+            id="heater-1"
+            ref={qRef}
+            onClick={handleClick}
+          >
             <audio
               className="clip"
               id="Q"
               src="https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3"
               preload="auto"
             ></audio>
-            <span className="q">Q</span>
+            Q
           </div>
-          <div className="drum-pad" ref={wRef}>
+          <div
+            className="drum-pad"
+            id="heater-2"
+            ref={wRef}
+            onClick={handleClick}
+          >
             <audio
               className="clip"
               id="W"
               src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
               preload="auto"
             ></audio>
-            <span>W</span>
+            W
           </div>
-          <div className="drum-pad" ref={eRef}>
+          <div
+            className="drum-pad"
+            id="heater-3"
+            ref={eRef}
+            onClick={handleClick}
+          >
             <audio
               className="clip"
               id="E"
               src="https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3"
               preload="auto"
             ></audio>
-            <span>E</span>
+            E
           </div>
-          <div className="drum-pad" ref={aRef}>
+          <div className="drum-pad" id="clap" ref={aRef} onClick={handleClick}>
             <audio
               className="clip"
               id="A"
               src="https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3"
               preload="auto"
             ></audio>
-            <span>A</span>
+            A
           </div>
-          <div className="drum-pad" ref={sRef}>
+          <div
+            className="drum-pad"
+            id="open-hh"
+            ref={sRef}
+            onClick={handleClick}
+          >
             <audio
               className="clip"
               id="S"
               src="https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3"
               preload="auto"
             ></audio>
-            <span>S</span>
+            S
           </div>
-          <div className="drum-pad" ref={dRef}>
+          <div
+            className="drum-pad"
+            id="kick-n-hat"
+            ref={dRef}
+            onClick={handleClick}
+          >
             <audio
               className="clip"
               id="D"
               src="https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3"
               preload="auto"
             ></audio>
-            <span>D</span>
+            D
           </div>
-          <div className="drum-pad" ref={zRef}>
+          <div className="drum-pad" id="kick" ref={zRef} onClick={handleClick}>
             <audio
               className="clip"
               id="Z"
               src="https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3"
               preload="auto"
             ></audio>
-            <span>Z</span>
+            Z
           </div>
-          <div className="drum-pad" ref={xRef}>
+          <div className="drum-pad" id="kick" ref={xRef} onClick={handleClick}>
             <audio
               className="clip"
               id="X"
               src="https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3"
               preload="auto"
             ></audio>
-            <span>X</span>
+            X
           </div>
-          <div className="drum-pad" ref={cRef}>
+          <div
+            className="drum-pad"
+            id="closed-hh"
+            ref={cRef}
+            onClick={handleClick}
+          >
             <audio
               className="clip"
               id="C"
               src="https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3"
               preload="auto"
             ></audio>
-            <span>C</span>
+            C
           </div>
         </div>
         <div className="controls-container">
           <div className="power">Power</div>
-          <p>Display</p>
+          <p id="display">Display</p>
           <div className="volume-slider">Volume Slider</div>
           <div className="bank">Bank</div>
         </div>

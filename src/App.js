@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import { useEffect, useRef, useState } from "react";
 
 export default function App() {
@@ -29,7 +30,7 @@ export default function App() {
         letterRef.current.classList.add("drum-pad-active");
       }
     } else {
-      if (letterRef.classList.contains("drum-pad-active")) {
+      if (letterRef.classList?.contains("drum-pad-active")) {
         letterRef.classList.remove("drum-pad-active");
       } else {
         letterRef.classList.add("drum-pad-active");
@@ -39,10 +40,12 @@ export default function App() {
 
   const currentRef = (letterRef) => {
     if (letterRef.current) {
+      // letterRef.current.children[0].volume = rangeVal;
       mutateDrumPadId(letterRef.current);
       letterRef.current.children[0].currentTime = 0;
       letterRef.current.children[0].play();
     } else {
+      // letterRef.volume = rangeVal;
       mutateDrumPadId(letterRef);
       letterRef.children[0].currentTime = 0;
       letterRef.children[0].play();
@@ -157,6 +160,7 @@ export default function App() {
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("keyup", handleKeyUp);
+
     // maybe also handle onlick event here as well for consistency
 
     // Maybe loop through drum-pads and set them to focus?
@@ -284,13 +288,26 @@ export default function App() {
           </div>
         </div>
         <div className="controls-container">
-          {/* TODO Strecth goal */}
+          {/* TODO Stretch goal */}
           {/* <div className="power">Power</div> */}
           <div className="display-container">
             <p id="display">{displayStr}</p>
           </div>
-          <div className="volume-slider">Volume Slider</div>
-          {/* TODO Strecth goal */}
+          {/* TODO Stretch goal */}
+
+          {/* <div className="volume-slider">
+            <p>
+              Volume: <span>{rangeVal}</span>
+            </p>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              onChange={handleChange}
+            />
+          </div> */}
+          {/* TODO Stretch goal */}
           {/* <div className="bank">Bank</div> */}
         </div>
       </div>

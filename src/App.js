@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import { useEffect, useRef, useState } from "react";
 
 export default function App() {
@@ -91,6 +90,8 @@ export default function App() {
         togglePadActiveClass(cRef);
         currentRef(cRef);
         break;
+      default:
+        console.log("Something went wrong");
     }
   };
 
@@ -123,6 +124,8 @@ export default function App() {
       case "C":
         togglePadActiveClass(cRef);
         break;
+      default:
+        console.log("Something went wrong");
     }
   };
 
@@ -155,6 +158,8 @@ export default function App() {
       case "C":
         currentRef(event.target.closest(".drum-pad"));
         break;
+      default:
+        console.log("Something went wrong");
     }
   };
 
@@ -165,7 +170,7 @@ export default function App() {
     // maybe also handle onlick event here as well for consistency
 
     // Maybe loop through drum-pads and set them to focus?
-  }, []);
+  });
 
   return (
     <>

@@ -61,3 +61,11 @@ body {
   justify-content: space-evenly;
   align-items: center;
 }
+
+.display-container {
+  background-color: antiquewhite;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+}

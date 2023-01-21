@@ -1,6 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function App() {
+  // TODO Refactor to use array of objects with key letters and audio info. use that length of array to generate drumPad components
+
+  const [displayStr, setDisplayStr] = useState("");
+
   const qRef = useRef(null);
   const wRef = useRef(null);
   const eRef = useRef(null);
@@ -11,6 +15,12 @@ export default function App() {
   const xRef = useRef(null);
   const cRef = useRef(null);
 
+  const mutateDrumPadId = (drumpad) => {
+    const str = drumpad.id.slice(1);
+    const beginningStr = drumpad.id.at(0).toUpperCase();
+    const newStr = beginningStr + str.replaceAll("-", " ");
+    setDisplayStr(newStr);
+  };
   const togglePadActiveClass = (letterRef) => {
     if (letterRef.current) {
       if (letterRef.current.classList.contains("drum-pad-active")) {
@@ -29,9 +39,11 @@ export default function App() {
 
   const currentRef = (letterRef) => {
     if (letterRef.current) {
+      mutateDrumPadId(letterRef.current);
       letterRef.current.children[0].currentTime = 0;
       letterRef.current.children[0].play();
     } else {
+      mutateDrumPadId(letterRef);
       letterRef.children[0].currentTime = 0;
       letterRef.children[0].play();
     }
@@ -145,6 +157,9 @@ export default function App() {
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("keyup", handleKeyUp);
+    // maybe also handle onlick event here as well for consistency
+
+    // Maybe loop through drum-pads and set them to focus?
   }, []);
 
   return (
@@ -239,7 +254,12 @@ export default function App() {
             ></audio>
             Z
           </div>
-          <div className="drum-pad" id="kick" ref={xRef} onClick={handleClick}>
+          <div
+            className="drum-pad"
+            id="kick-2"
+            ref={xRef}
+            onClick={handleClick}
+          >
             <audio
               className="clip"
               id="X"
@@ -264,10 +284,14 @@ export default function App() {
           </div>
         </div>
         <div className="controls-container">
-          <div className="power">Power</div>
-          <p id="display">Display</p>
+          {/* TODO Strecth goal */}
+          {/* <div className="power">Power</div> */}
+          <div className="display-container">
+            <p id="display">{displayStr}</p>
+          </div>
           <div className="volume-slider">Volume Slider</div>
-          <div className="bank">Bank</div>
+          {/* TODO Strecth goal */}
+          {/* <div className="bank">Bank</div> */}
         </div>
       </div>
     </>

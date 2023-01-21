@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 export default function App() {
   // TODO Refactor to use array of objects with key letters and audio info. use that length of array to generate drumPad components
 
+  // Also make more responsive
   const [displayStr, setDisplayStr] = useState("");
 
   const qRef = useRef(null);

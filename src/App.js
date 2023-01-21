@@ -22,30 +22,24 @@ export default function App() {
     const newStr = beginningStr + str.replaceAll("-", " ");
     setDisplayStr(newStr);
   };
-  const togglePadActiveClass = (letterRef) => {
+  const addActiveClass = (letterRef) => {
     if (letterRef.current) {
-      if (letterRef.current.classList.contains("drum-pad-active")) {
-        letterRef.current.classList.remove("drum-pad-active");
-      } else {
-        letterRef.current.classList.add("drum-pad-active");
-      }
-    } else {
-      if (letterRef.classList?.contains("drum-pad-active")) {
-        letterRef.classList.remove("drum-pad-active");
-      } else {
-        letterRef.classList.add("drum-pad-active");
-      }
+      letterRef.current.classList.add("drum-pad-active");
+    }
+  };
+
+  const removeActiveClass = (letterRef) => {
+    if (letterRef.current) {
+      letterRef.current.classList.remove("drum-pad-active");
     }
   };
 
   const currentRef = (letterRef) => {
     if (letterRef.current) {
-      // letterRef.current.children[0].volume = rangeVal;
       mutateDrumPadId(letterRef.current);
       letterRef.current.children[0].currentTime = 0;
       letterRef.current.children[0].play();
     } else {
-      // letterRef.volume = rangeVal;
       mutateDrumPadId(letterRef);
       letterRef.children[0].currentTime = 0;
       letterRef.children[0].play();
@@ -55,39 +49,39 @@ export default function App() {
   const handleKeyDown = (event) => {
     switch (event.key.toUpperCase()) {
       case "Q":
-        togglePadActiveClass(qRef);
+        addActiveClass(qRef);
         currentRef(qRef);
         break;
       case "W":
-        togglePadActiveClass(wRef);
+        addActiveClass(wRef);
         currentRef(wRef);
         break;
       case "E":
-        togglePadActiveClass(eRef);
+        addActiveClass(eRef);
         currentRef(eRef);
         break;
       case "A":
-        togglePadActiveClass(aRef);
+        addActiveClass(aRef);
         currentRef(aRef);
         break;
       case "S":
-        togglePadActiveClass(sRef);
+        addActiveClass(sRef);
         currentRef(sRef);
         break;
       case "D":
-        togglePadActiveClass(dRef);
+        addActiveClass(dRef);
         currentRef(dRef);
         break;
       case "Z":
-        togglePadActiveClass(zRef);
+        addActiveClass(zRef);
         currentRef(zRef);
         break;
       case "X":
-        togglePadActiveClass(xRef);
+        addActiveClass(xRef);
         currentRef(xRef);
         break;
       case "C":
-        togglePadActiveClass(cRef);
+        addActiveClass(cRef);
         currentRef(cRef);
         break;
       default:
@@ -98,31 +92,31 @@ export default function App() {
   const handleKeyUp = (event) => {
     switch (event.key.toUpperCase()) {
       case "Q":
-        togglePadActiveClass(qRef);
+        removeActiveClass(qRef);
         break;
       case "W":
-        togglePadActiveClass(wRef);
+        removeActiveClass(wRef);
         break;
       case "E":
-        togglePadActiveClass(eRef);
+        removeActiveClass(eRef);
         break;
       case "A":
-        togglePadActiveClass(aRef);
+        removeActiveClass(aRef);
         break;
       case "S":
-        togglePadActiveClass(sRef);
+        removeActiveClass(sRef);
         break;
       case "D":
-        togglePadActiveClass(dRef);
+        removeActiveClass(dRef);
         break;
       case "Z":
-        togglePadActiveClass(zRef);
+        removeActiveClass(zRef);
         break;
       case "X":
-        togglePadActiveClass(xRef);
+        removeActiveClass(xRef);
         break;
       case "C":
-        togglePadActiveClass(cRef);
+        removeActiveClass(cRef);
         break;
       default:
         console.log("Something went wrong");
